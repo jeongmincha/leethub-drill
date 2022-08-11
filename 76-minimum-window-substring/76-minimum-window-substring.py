@@ -4,9 +4,9 @@ class Solution:
             return ""
         
         counterT = {}
+        counterWindow = {}
         for c in t:
             counterT[c] = 1 + counterT.get(c, 0)
-        counterWindow = {}
         
         res, resLen = [-1,-1], float("infinity")
         have, need = 0, len(counterT)
