@@ -9,7 +9,7 @@ class Solution:
         result = []
         stack = [root]
         
-        while stack and root is not None:
+        while stack and root:
             if root.left:
                 stack.append(root.left)
                 root = root.left
