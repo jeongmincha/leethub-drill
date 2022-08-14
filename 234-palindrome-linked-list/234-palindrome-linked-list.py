@@ -18,7 +18,7 @@ class Solution:
     
     # This solution - Time Complexity: O(n), Space Comlexity: O(n)
     # It solves the problem by using a stack
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+    def __isPalindrome(self, head: Optional[ListNode]) -> bool:
         stack = []
         
         curr = head
@@ -64,3 +64,24 @@ class Solution:
             right = right.next
         
         return answer
+    
+    # This solution - Time Complexity: O(n), Space Complexity: O(1)
+    # This uses recursion to solve the problem.
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        left = head
+        
+        def helper(right):
+            nonlocal left
+            
+            if right is None:
+                return True
+            
+            isSubPalindrome = helper(right.next)
+            if not isSubPalindrome:
+                return False
+            
+            _isPalindrome = left.val == right.val
+            left = left.next
+            return _isPalindrome
+        
+        return helper(head)
