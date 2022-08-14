@@ -4,22 +4,41 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        stack = []
-        
+    def reverseList(self, head: Optional[ListNode]) -> None:
+        prev = None
         curr = head
+        
         while curr:
-            stack.append(curr.val)
-            curr = curr.next
+            _next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = _next
+        
+        return prev
+    
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        slow = head
+        fast = head
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        # if fast is not None, the length will be odd.
+        if fast:
+            mid = slow
+            slow = slow.next
+            mid.next = None
         
         answer = True
-        curr = head
-        while curr:
-            elem = stack.pop()
-            
-            if curr.val != elem:
+        left = head
+        right = self.reverseList(slow)
+        while right:
+            if left.val != right.val:
                 answer = False
+                break
             
-            curr = curr.next
+            left = left.next
+            right = right.next
         
         return answer
