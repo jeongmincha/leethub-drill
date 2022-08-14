@@ -16,7 +16,29 @@ class Solution:
         
         return prev
     
+    # This solution - Time Complexity: O(n), Space Comlexity: O(n)
+    # It solves the problem by using a stack
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        stack = []
+        
+        curr = head
+        while curr:
+            stack.append(curr.val)
+            curr = curr.next
+            
+        answer = True
+        curr = head
+        while curr:
+            if stack.pop() != curr.val:
+                answer = False
+                break
+            curr = curr.next
+        
+        return answer
+    
+    # This solution - Time Complexity: O(n), Space Complexity: O(1)
+    # It will work with the `reverseList()` which is implemented above
+    def _isPalindrome(self, head: Optional[ListNode]) -> bool:
         slow = head
         fast = head
         
