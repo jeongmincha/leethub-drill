@@ -8,6 +8,8 @@ class Solution:
         last_index = {}
         
         for right, char in enumerate(s):
+            # char in last_index -> there is a duplicates
+            # left <= last_index[char] -> there is a duplicates "in current sliding window"
             if char in last_index and left <= last_index[char]:
                 left = last_index[char] + 1
             else:
