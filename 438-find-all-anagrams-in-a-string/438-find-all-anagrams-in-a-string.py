@@ -13,14 +13,14 @@ class Solution:
         for sc in s[:len(p)]:
             s_counter[ord(sc) - ord('a')] += 1
         
-        if s_counter == p_counter:
+        if tuple(s_counter) == tuple(p_counter):
             answer.append(0)
         
         for start in range(1, len(s) - len(p) + 1):
             s_counter[ord(s[start-1]) - ord('a')] -= 1
             s_counter[ord(s[start+len(p)-1]) - ord('a')] += 1
             
-            if s_counter == p_counter:
+            if tuple(s_counter) == tuple(p_counter):
                 answer.append(start)
         
         return answer
