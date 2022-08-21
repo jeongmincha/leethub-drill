@@ -1,11 +1,9 @@
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
-        evens = []
-        odds = []
-        for num in nums:
-            if num % 2 == 1:
-                odds.append(num)
-            else:
-                evens.append(num)
+        last_even_idx = 0
+        for idx, num in enumerate(nums):
+            if num % 2 == 0:
+                [nums[idx], nums[last_even_idx]] = [nums[last_even_idx], nums[idx]]
+                last_even_idx += 1
         
-        return evens + odds
+        return nums
