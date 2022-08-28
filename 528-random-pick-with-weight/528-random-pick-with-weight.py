@@ -19,20 +19,12 @@ class Solution:
         while left <= right:
             mid = (left + right) // 2
             
-            if mid == 0:
-                if 0 < rand <= self.prefixSum[0]:
-                    return 0
-                else:
-                    left = mid + 1
+            if self.prefixSum[mid] < rand:
+                left = mid + 1
             else:
-                if self.prefixSum[mid-1] < rand <= self.prefixSum[mid]:
-                    return mid
-                elif rand <= self.prefixSum[mid-1]:
-                    right = mid - 1
-                elif rand > self.prefixSum[mid]:
-                    left = mid + 1
-        
-        return -1
+                right = mid - 1
+
+        return right + 1
         
 
 
