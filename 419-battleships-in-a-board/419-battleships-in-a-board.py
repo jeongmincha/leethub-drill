@@ -1,6 +1,6 @@
 class Solution:
     def countBattleships(self, board: List[List[str]]) -> int:
-        DIRECTIONS = [(-1,0), (1,0), (0,-1), (0,1)]
+        DIRECTIONS = [(1,0), (0,1)]
         M = len(board)
         N = len(board[0])
         visited = [[False for _ in range(N)] for _ in range(M)]
