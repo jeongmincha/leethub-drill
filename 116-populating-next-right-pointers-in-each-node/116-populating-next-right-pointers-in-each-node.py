@@ -13,15 +13,17 @@ class Solution:
         if not root:
             return None
         
-        def dfs(left, right):
-            if not left or not right or left.next:
+        def dfs(node):
+            if not node or not node.left:
                 return
             
-            left.next = right
-            dfs(left.left, left.right)
-            dfs(left.right, right.left)
-            dfs(right.left, right.right)
-
-        dfs(root.left, root.right)
+            node.left.next = node.right
+            if node.next:
+                node.right.next = node.next.left
+            
+            dfs(node.left)
+            dfs(node.right)
+        
+        dfs(root)
         
         return root
