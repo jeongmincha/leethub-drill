@@ -14,7 +14,7 @@ class Solution:
             return None
         
         def dfs(left, right):
-            if not left or not right:
+            if not left or not right or left.next:
                 return
             
             left.next = right
