@@ -11,9 +11,6 @@ class Solution:
         # dp[x][y][2] = the length of the line until (x,y) in diagonal line (diagonal to the right bottom)
         # dp[x][y][3] = the length of the line until (x,y) in anti-diagonal line (diagonal to the left bottom)
         
-        dp[0][0][0] = dp[0][0][1] = dp[0][0][2] = dp[0][0][3] = mat[0][0]
-        
-        
         answer = 0
         for r in range(M):
             for c in range(N):
