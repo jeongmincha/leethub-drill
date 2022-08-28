@@ -8,20 +8,20 @@ class Node:
         self.next = next
 """
 
-class Solution:
+class Solution:    
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        if root is None:
+        if not root:
             return None
         
-        _left = root.left
-        _right = root.right
-        
-        while _left:
-            _left.next = _right
-            _left = _left.right
-            _right = _right.left
-        
-        self.connect(root.left)
-        self.connect(root.right)
+        def dfs(left, right):
+            if not left or not right or left.next:
+                return
+            
+            left.next = right
+            dfs(left.left, left.right)
+            dfs(left.right, right.left)
+            dfs(right.left, right.right)
+
+        dfs(root.left, root.right)
         
         return root
