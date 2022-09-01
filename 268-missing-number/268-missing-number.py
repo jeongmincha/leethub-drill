@@ -1,4 +1,3 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        N = len(nums)
-        return N * (N+1) // 2 - sum(nums)
+        return (len(nums) + 1) * len(nums) // 2 - sum(nums)
