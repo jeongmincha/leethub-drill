@@ -3,6 +3,7 @@ class Solution:
         N = len(nums)
         for i in range(N):
             curr_num = abs(nums[i]) - 1
-            nums[curr_num] = min(nums[curr_num], -nums[curr_num])
+            if nums[curr_num] > 0:
+                nums[curr_num] *= -1
         
         return [i+1 for i in range(N) if nums[i] > 0]
