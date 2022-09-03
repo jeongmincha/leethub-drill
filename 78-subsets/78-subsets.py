@@ -12,12 +12,12 @@ class Solution:
             if idx == N:
                 answer.append([e for e in subset if e is not None])
             else:
+                subset[idx] = None
                 helper(idx+1, subset)
-                subset.append(nums[idx])
+                subset[idx] = nums[idx]
                 helper(idx+1, subset)
-                subset.remove(nums[idx])
 
-        subset = []
+        subset = [0] * N
         helper(0, subset)
         
         return answer
