@@ -22,13 +22,13 @@ class DetectSquares:
                 res += cnt * self.points[i, y] * self.points[x, j]
             return res
         
-        for i in range(0, 1001):
-            if i == x:
-                continue
+#         for i in range(0, 1001):
+#             if i == x:
+#                 continue
             
-            d = abs(x-i)
-            for j in [y+d, y-d]:
-                res += self.points[i, j] * self.points[x, j] * self.points[i, y]
+#             d = abs(x-i)
+#             for j in [y+d, y-d]:
+#                 res += self.points[i, j] * self.points[x, j] * self.points[i, y]
         
         return res
         
